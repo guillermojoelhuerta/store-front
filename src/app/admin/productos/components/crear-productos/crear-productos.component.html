@@ -1,0 +1,64 @@
+<div class="container-fluid" style="width: 700px;">
+<h2>Producto</h2>
+<form class="row g-3" [formGroup]="createProduct">
+    <div class="col-12">
+      <label for="idCategory" class="form-label">Categoría:</label>
+      <select formControlName="idCategory" name="idCategory" id="idCategory" (change)="cambiarSelect()" class="form-control">
+          <option value="" selected>Seleccione:</option>
+          <option *ngFor="let cat of catCategorias" [value]="cat.idCategory" >{{cat.name}}</option>
+      </select>
+      <div *ngIf="createProduct.controls['idCategory'].invalid && (createProduct.controls['idCategory'].dirty || createProduct.controls['idCategory'].touched)">
+        <div *ngIf="createProduct.controls['idCategory'].errors?.['required']" class="text-danger">La categoría es requerida</div>
+      </div>
+    </div>
+    <div class="col-12">
+      <label for="name" class="form-label">Producto:</label>
+      <input type="text" class="form-control" id="name" name="name" formControlName="name" placeholder="name">
+      <div *ngIf="createProduct.controls['name'].invalid && (createProduct.controls['name'].dirty || createProduct.controls['name'].touched)">
+        <div *ngIf="createProduct.controls['name'].errors?.['required']" class="text-danger">La nombre del producto es requerido</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+        <label for="price" class="form-label">Precio:</label>
+        <input type="text" class="form-control" id="price" name="price" formControlName="price" placeholder="price" appMascaraMoneda>
+        <div *ngIf="createProduct.controls['price'].invalid && (createProduct.controls['price'].dirty || createProduct.controls['price'].touched)">
+          <div *ngIf="createProduct.controls['price'].errors?.['required']" class="text-danger">El precio es requerido</div>
+          <!--
+          <div *ngIf="createProduct.controls['price'].errors?.['min']" class="text-danger">El precio mínimo es 0</div>
+          <div *ngIf="createProduct.controls['price'].errors?.['max']" class="text-danger">El precio máximo es 10,000</div>
+          <div *ngIf="createProduct.controls['price'].errors?.['pattern']" class="text-danger">Ingrese un valor numérico válido</div>
+          -->
+        </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="amount" class="form-label">Cantidad:</label>
+        <input type="text" class="form-control" id="amount" name="amount" formControlName="amount" placeholder="amount" appSoloNumbers>
+        <div *ngIf="createProduct.controls['amount'].invalid && (createProduct.controls['amount'].dirty || createProduct.controls['amount'].touched)">
+          <div *ngIf="createProduct.controls['amount'].errors?.['required']" class="text-danger">La cantidad es requerida</div>
+          <div *ngIf="createProduct.controls['amount'].errors?.['min']" class="text-danger">El cantidad mínima es 0</div>
+          <div *ngIf="createProduct.controls['amount'].errors?.['max']" class="text-danger">El cantidad máxima es 10000</div>
+          <!--<div *ngIf="createProduct.controls['amount'].errors?.['pattern']" class="text-danger">Ingrese un valor numérico válido</div>-->
+          <div *ngIf="createProduct.controls['amount'].errors?.['soloNumeros']" class="text-danger">Ingrese un valor numérico válido</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <label for="description" class="form-label">Descripción:</label>
+      <textarea class="form-control" id="description" name="description" formControlName="description" placeholder="Enter your message"></textarea>
+      <div *ngIf="createProduct.controls['description'].invalid && (createProduct.controls['description'].dirty || createProduct.controls['description'].touched)">
+        <div *ngIf="createProduct.controls['description'].errors?.['required']" class="text-danger">La descripción es requerida</div>
+      </div>
+    </div>
+    <div class="col-12">
+        <label for="image" class="form-label">Imagen del producto:</label>
+        <input type="file" class="form-control" #imageInput name="image" formControlName="image" (change)="imageChangeEvent($event)"/>
+        <div *ngIf="createProduct.controls['image'].invalid && (createProduct.controls['image'].dirty || createProduct.controls['image'].touched)">
+          <div *ngIf="createProduct.controls['image'].errors?.['required']" class="text-danger">La imagen es requerida</div>
+        </div>
+      </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary" (click)="saveProduct()" [disabled]="createProduct.invalid">Submit</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,62 @@
+<div class="container">
+  <div id="divFormBuscar" class="divFormBuscar">
+    <form [formGroup]="searchForm" (ngSubmit)="getProductsPage()">
+    <div class="textBuscarPor">Buscar por:</div>
+    <div id="divBuscarPor" class="divBuscarPor">
+      <select name="searchBy" formControlName="searchBy" class="form-control">
+        <option value="">Selecciona</option>
+        <option value="category">Categoría</option>
+        <option value="name">Nombre</option>
+        <option value="price">Precio</option>
+      </select>
+    </div>
+    <div id="divBuscarInput" class="divBuscarInput">
+      <div *ngIf="searchByCategory == false">
+        <input name="search" id="search" formControlName="search" class="form-control"/>
+      </div>
+      <div *ngIf="searchByCategory == true">
+        <select name="categoryValue" formControlName="categoryValue" class="form-control">
+          <option value="">Selecciona</option>
+          <option *ngFor="let cat of catCategorias" [value]="cat.idCategory" >{{cat.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div id="divSearch" class="divSearch">
+      <input type="submit" name="buscar" value="Buscar" [disabled]="searchForm.invalid" class="btn btn-primary" />
+    </div>
+    <div id="divLimpiar" class="divLimpiar">
+      <input type="button" (click)="clean()" value="Limpiar" class="btn btn-primary" />
+    </div>
+    </form>
+  </div>
+  <div>
+    <div *ngFor="let row of products" class="row fila">
+      <div *ngFor="let cell of row" class="col-sm-4">
+        <div *ngIf="cell.name != '' ">
+          <h3>{{ cell.name }}</h3>
+          <a [routerLink]="['/user/seleccion/mostrar-producto/'+cell.idProduct]">
+            <img src="{{ this.img }}{{ cell.imageProduct?.name}}" width="250" height="250">
+          </a>
+          <div class="precio">Precio: ${{cell.price}} </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="centrarDiv">
+    <nav aria-label="...">
+      <ul class="pagination">
+        <li class="page-item">
+          <button class="page-link" [disabled]="pagination.page == 0" (click)="paginate(pagination.page-1)">Anterior</button>
+        </li>
+        <li>
+          <div class="textoLi">{{ pagination.page+1 }}</div>
+          <div class="textoLi">de</div>
+          <div class="textoLi">{{ pagination.totalPages }}</div>
+        </li>
+        <li class="page-item">
+          <button class="page-link" [disabled]="pagination.page == pagination.totalPages" (click)="paginate(pagination.page+1)">Siguiente</button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

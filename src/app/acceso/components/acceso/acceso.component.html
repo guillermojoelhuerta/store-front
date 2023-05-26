@@ -1,0 +1,24 @@
+<div class="container-fluid" style="width:700px">
+  <div class="d-flex d-flex justify-content-center">
+      <h2>Acceso</h2>
+  </div>
+  <div *ngIf="error_message" class="alert alert-danger">{{error_message}}</div>
+  <form [formGroup]="loginForm">
+      <div class="d-grid gap-3">
+          <div class="p-2 bg-light">
+              <label>Usuario</label>
+              <input placeholder="pat@example.com" class="form-control" id="email" formControlName="email" required>
+          </div>
+          <div class="p-2 bg-light">
+              <label>Password</label>
+              <input id="password" class="form-control" formControlName="password" required>
+          </div>
+          <div class="p-2 bg-light border d-flex d-flex justify-content-center">
+              <div class="position-absolute top-0 start-0 translate-middle"></div>
+              <button type="button" class="btn btn-success" (click)="enviarForm()" [disabled]="loginForm.invalid">
+                  Enviar
+              </button>
+          </div>
+        </div>
+  </form>
+</div>

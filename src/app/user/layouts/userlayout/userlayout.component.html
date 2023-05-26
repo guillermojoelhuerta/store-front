@@ -1,0 +1,16 @@
+<div class="container">
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <span class="navbar-text">
+      Navbar text with an inline element
+    </span>
+    <button type="button" class="btn position-relative" (click)="compras()">
+      <img src="assets/carrito2.png" alt="Actualizar"  width="25" height="25" />
+      <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">
+        <span>{{ this.products }}</span>
+      </span>
+    </button>
+  </div>
+</nav>
+<router-outlet></router-outlet>
+</div>

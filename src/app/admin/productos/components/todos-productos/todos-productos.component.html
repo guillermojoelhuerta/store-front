@@ -1,0 +1,85 @@
+<div id="divFormBuscar" class="divFormBuscar">
+    <form [formGroup]="searchForm" (ngSubmit)="getProductsPage()">
+    <div class="textBuscarPor">Buscar por:</div> 
+    <div id="divBuscarPor" class="divBuscarPor">        
+      <select name="searchBy" formControlName="searchBy" class="form-control">
+        <option value="">Selecciona</option>
+        <option value="category">Categoría</option>
+        <option value="name">Nombre</option>
+        <option value="price">Precio</option>
+      </select>                          
+    </div>                       
+    <div id="divBuscarInput" class="divBuscarInput">            
+      <input name="search" id="search" formControlName="search" class="form-control"/>
+    </div>            
+    <div id="divSearch" class="divSearch">
+      <input type="submit" name="buscar" value="Buscar" class="btn btn-primary" />
+    </div>
+    <div id="divLimpiar" class="divLimpiar">           
+      <input type="button" (click)="clean()" value="Limpiar" class="btn btn-primary" />
+    </div>
+    </form>
+  </div>
+  <div class="container">
+      <div class="row">
+        <div class="col">
+          Id
+        </div>
+        <div class="col">
+          Categoría
+        </div>
+        <div class="col">
+          Nombre
+        </div>                         
+        <div class="col">
+          Precio
+        </div>
+        <div class="col">
+          Actualizar
+        </div>
+        <div class="col">
+          Eliminar
+        </div>
+      </div>
+      <div *ngFor="let item of products; let indice = index" class="row">
+          <div class="col">       
+              {{ indice+1 }} 
+          </div>
+          <div class="col">                          
+            {{ item.categories?.[0]?.name }}               
+          </div>                                    
+          <div class="col">
+              {{ item.name }}       
+          </div>
+          <div class="col">
+              {{ item.price }}
+          </div>
+          <div class="col">                        
+              <a [routerLink]="['/admin/productos/editar-producto/'+item.idProduct]">
+                  <img src="assets/actualizar.png" alt="Actualizar" width="25" height="25"/>
+              </a>                  
+          </div>            
+          <div class="col">                                                                                                                                           
+              <a href="javascript:" (click)="item.imageProduct && deleteProduct(indice, item.imageProduct)" alt="Actualizar"  width="25" height="25">
+                  <img src="assets/eliminar.png" alt="Actualizar"  width="25" height="25"/>           
+              </a>                                                                                                
+          </div>
+      </div>
+      <div class="centrarDiv">   
+      <nav aria-label="...">                     
+        <ul class="pagination">
+          <li class="page-item">
+            <button class="page-link" [disabled]="pagination.page == 0" (click)="paginate(pagination.page-1)">Anterior</button>
+          </li>                                                             
+          <li>          
+            <div class="textoLi">{{ pagination.page+1 }}</div> 
+            <div class="textoLi">de</div>       
+            <div class="textoLi">{{ pagination.totalPages }}</div>
+          </li>                  
+          <li class="page-item">                
+            <button class="page-link" [disabled]="pagination.page == pagination.totalPages" (click)="paginate(pagination.page+1)">Siguiente</button>
+          </li>         
+        </ul>
+      </nav>
+      </div>                    
+    </div>

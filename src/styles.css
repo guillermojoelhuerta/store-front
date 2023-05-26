@@ -1,0 +1,107 @@
+/* You can add global styles to this file, and also import other style files */
+.centrarDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.textoLi{
+    margin:5px;
+    display:inline;
+}
+
+.divFormBuscar{
+   margin:10px;
+   padding: 5px;
+   text-align: right;
+}
+
+.textBuscarPor{
+    display:inline-block;
+    margin-right: 5px;
+    width:100px;
+    text-align: right;
+}
+
+.divBuscarPor{
+    display:inline-block;
+    margin-right: 5px;
+    width:110px;
+}
+
+.divBuscarInput{
+    display:inline-block;
+    margin-right: 5px;
+    width:150px;
+}
+
+.divSearch{
+    display:inline-block;
+    margin-right: 5px;
+}
+
+.divLimpiar{
+    display:inline-block;
+    margin-right: 5px;
+}
+
+.divImg{
+    display:inline-block;
+    margin-right: 15px;
+    margin-bottom: 25px;
+}
+
+.divAssetDelete{
+    display:inline-block;
+    margin-right: 15px;
+    margin-bottom: 25px;
+}
+
+.precio{
+  display:block;
+  margin-top:20px;
+  margin-bottom:20px;
+}
+
+.fila{
+  margin-bottom: 20px;
+}
+
+.sBlock{
+  display:block;
+}
+
+.sMargin-10{
+  margin:10px;
+}
+
+.mostrar_producto .info{
+  display:inline-block;
+  padding: 15px;
+}
+
+.mostrar_producto label{
+  color:gray;
+}
+
+.prods{
+  width:700px;
+  display:inline-block;
+}
+
+.productos_totales{}
+
+.productos_totales .info{
+  display:inline-block;
+  padding: 15px;
+}
+
+.info2{
+  display:inline;
+  width:150px;
+  padding: 15px;
+}
+
+.productos_totales label{
+  color:gray;
+}

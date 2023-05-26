@@ -1,0 +1,23 @@
+<div class="container">
+<h3>Compras</h3>
+  <div class="prods">
+  <div *ngFor="let product of products">
+    <div class="productos_totales">
+    <div class="info">
+    <img [src]="img+'/'+product.imageProduct?.name" alt="" width="300" height="300">
+    </div>
+    <div class="info">
+    <div class="sBlock sMargin-10"><label>Nombre : </label>{{product.name}}</div>
+    <div class="sBlock sMargin-10"><label>Descripción : </label>{{product.description}}</div>
+    <div class="sBlock sMargin-10"><label>Precio : </label>${{product.price}}</div>
+    <a href="javascript:" (click)="deleteProduct(product)" alt="Actualizar"  width="25" height="25">
+      <img src="assets/eliminar.png" alt="Eliminar"  width="25" height="25" class="sBlock sMargin-10"/>
+    </a>
+    </div>
+    </div>
+  </div>
+  </div>
+  <div *ngIf="total>0" class="info2">
+    <label>Total = </label> ${{total}}
+  </div>
+</div>

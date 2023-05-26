@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      Id
+    </div>
+    <div class="col">
+      Nombre
+    </div>        
+    <div class="col">
+      Descripción
+    </div>
+    <div class="col">
+      Actualizar
+    </div>
+    <div class="col">
+      Eliminar
+    </div>
+  </div>
+  <div *ngFor="let item of categorias; let indice = index" class="row">
+      <div class="col">       
+          {{ indice+1 }} 
+      </div>
+      <div class="col">
+          {{ item.name }}       
+      </div>
+      <div class="col">
+          {{ item.description }}
+      </div>
+      <div class="col">                 
+          <a [routerLink]="['/admin/categorias/editar-categoria/'+item.idCategory]">
+              <img src="assets/actualizar.png" alt="Actualizar" width="25" height="25"/>
+          </a>          
+      </div>                    
+      <div class="col">
+          <a (click)="eliminarCategoria(indice, item)"> 
+              <img src="assets/eliminar.png" alt="Actualizar"  width="25" height="25"/>
+          </a>          
+      </div>
+  </div>                  
+  <div class="centrarDiv">   
+    <nav aria-label="...">                     
+      <ul class="pagination">
+        <li class="page-item">
+          <button class="page-link" [disabled]="pagination.page == 0" (click)="paginaPag(pagination.page-1)">Anterior</button>
+        </li>                                                             
+        <li>          
+          <div class="textoLi">{{ pagination.page+1 }}</div> 
+          <div class="textoLi">de</div> 
+          <div class="textoLi">{{ pagination.totalPages }}</div>
+        </li>                   
+        <li class="page-item">                      
+          <button class="page-link" [disabled]="pagination.page == pagination.totalPages" (click)="paginaPag(pagination.page+1)">Siguiente</button>
+        </li>         
+      </ul>
+    </nav>
+    </div>
+
+</div>
+  

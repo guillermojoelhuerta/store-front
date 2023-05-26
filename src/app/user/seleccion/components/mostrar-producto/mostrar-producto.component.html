@@ -1,0 +1,13 @@
+<div class="container">
+  <div *ngIf="product" class="mostrar_producto">
+    <div class="info">
+      <h3>{{ product.name }}</h3>
+      <img [src]="this.img + '/' + product.imageProduct?.name" width="250" height="250">
+    </div>
+    <div class="info">
+      <div class="sBlock sMargin-10"><label>Precio:</label> ${{product.price}} </div>
+      <div class="sBlock sMargin-10"><label>Descripción:</label> {{product.description}} </div>
+      <button (click)="comprar()" class="btn btn-success sMargin-10">Comprar</button>
+    </div>
+  </div>
+</div>

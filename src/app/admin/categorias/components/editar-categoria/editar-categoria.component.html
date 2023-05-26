@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <h2>Categoría</h2>          
+    <form [formGroup]="categoryForm" class="row g-3"> 
+        <div class="col-12">          
+            <label for="name" class="form-label">Nombre:</label>
+            <input type="text" class="form-control" id="name" name="name" formControlName="name" placeholder="name">
+        </div>                                             
+        <div class="col-12">
+          <label for="description" class="form-label">Descripción:</label>
+          <textarea class="form-control" id="description" name="description" formControlName="description" placeholder="description"></textarea>
+        </div>    
+        <div class="col-12">      
+          <button type="submit" class="btn btn-primary" (click)="saveData()" [disabled]="categoryForm.invalid">Submit</button>
+        </div>
+    </form>                   
+</div>
